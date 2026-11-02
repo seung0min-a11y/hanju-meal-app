@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="theme-color" content="#faf9f6">
+  <meta name="theme-color" content="#101816">
   <meta name="description" content="칼로리 입력 없이 일주일 식단을 계획하고 실천을 체크하는 가벼운 플래너">
   
   <link rel="icon" href="./icon-192.png" type="image/png">
@@ -21,7 +21,7 @@
       <div class="calendar-top"><div><h2>월간 식단</h2><p>날짜를 누르면 해당 주 식단으로 이동해요.</p></div><div class="calendar-nav"><button id="prevMonth" aria-label="이전 달">‹</button><strong id="monthLabel"></strong><button id="nextMonth" aria-label="다음 달">›</button></div></div>
       <div class="calendar-weekdays"><span>월</span><span>화</span><span>수</span><span>목</span><span>금</span><span>토</span><span>일</span></div>
       <div class="calendar-grid" id="calendarGrid"></div>
-      <div class="calendar-legend"><span><i class="legend-dot planned"></i>계획한 식단</span><span><i class="legend-dot checked"></i>실천 완료</span></div>
+      <div class="calendar-legend"><span><i class="legend-dot planned"></i>계획한 식단</span><span><i class="legend-dot checked"></i>실천 완료</span><span><i class="legend-dot cheat"></i>치팅</span><span>🏃 유산소 · 🏋 웨이트</span></div>
     </section>
     <section class="weekbar" aria-label="주 선택"><button id="prevWeek" aria-label="이전 주">‹</button><button id="weekLabel" class="week-label" title="이번 주로 이동"><span id="weekRange"></span><small id="weekStatus"></small></button><button id="nextWeek" aria-label="다음 주">›</button></section>
     <section class="summary"><div class="stat"><span>실천한 식사</span><strong id="completedCount">0<small> / 0</small></strong></div><div class="stat"><span>달성률</span><strong id="percent">0%</strong></div><div class="progress" role="progressbar" aria-label="주간 달성률" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div id="progressFill"></div></div><p class="hint" id="summaryHint">먼저 이번 주 식단을 적어보세요.</p></section>
@@ -31,7 +31,7 @@
     <footer>입력한 정보는 이 휴대폰의 앱에만 저장됩니다.<br>데이터를 지우거나 앱 데이터을 삭제하면 기록이 사라질 수 있어요.</footer>
   </main>
 </div>
-<dialog id="mealDialog"><form method="dialog" id="mealForm"><div class="dialog-head"><div><span id="editMeta">식단 수정</span><h2 id="editTitle">월요일 · 점심</h2></div><button type="button" class="close-btn" id="closeMeal" aria-label="닫기">×</button></div><label class="field-label" for="mealText">이번 식사 계획</label><textarea id="mealText" rows="3" maxlength="180" placeholder="예: 회사 점심 일반식 / 밥 반 공기"></textarea><div class="quick"><span>빠른 입력</span><div><button type="button" data-preset="일반식">일반식</button><button type="button" data-preset="가볍게">가볍게</button><button type="button" data-preset="자유식">자유식</button><button type="button" data-preset="단백질 위주">단백질 위주</button></div></div><div class="dialog-buttons"><button type="button" id="deleteMeal" class="danger-btn">계획 삭제</button><button type="submit" id="saveMeal" class="primary-btn">저장</button></div></form></dialog>
+<dialog id="mealDialog"><form method="dialog" id="mealForm"><div class="dialog-head"><div><span id="editMeta">식단 수정</span><h2 id="editTitle">월요일 · 점심</h2></div><button type="button" class="close-btn" id="closeMeal" aria-label="닫기">×</button></div><label class="field-label" for="mealText">이번 식사 계획</label><textarea id="mealText" rows="3" maxlength="180" placeholder="예: 회사 점심 일반식 / 밥 반 공기"></textarea><div class="quick"><span>자주 쓰는 문구</span><div><button type="button" data-preset="회사 점심">회사 점심</button><button type="button" data-preset="회사 저녁">회사 저녁</button><button type="button" data-preset="아내랑 치팅">아내랑 치팅</button></div></div><label id="skipBreakfastLabel" class="skip-option"><input type="checkbox" id="skipBreakfast"> 아침 스킵 (달성률 계산에서 제외)</label><div class="dialog-buttons"><button type="button" id="deleteMeal" class="danger-btn">계획 삭제</button><button type="submit" id="saveMeal" class="primary-btn">저장</button></div></form></dialog>
 <dialog id="settingsDialog"><div class="dialog-head"><div><span>내 데이터</span><h2>설정 및 백업</h2></div><button id="closeSettings" class="close-btn" aria-label="닫기">×</button></div><p class="setting-info">모든 식단과 체크 기록은 현재 기기에만 보관됩니다. 휴대폰 변경이나 브라우저 초기화에 대비해 백업 파일을 저장하세요.</p><div class="setting-actions"><button id="exportData" class="primary-btn">기록 백업하기 (.json)</button><label class="import-label" for="importData">백업 파일 불러오기</label><input id="importData" type="file" accept="application/json,.json" hidden></div><p class="setting-warning">백업 파일 불러오기는 현재 저장된 기록을 대체합니다.</p><button id="wipeData" class="danger-outline">전체 기록 삭제</button></dialog>
 <div id="toast" role="status" aria-live="polite"></div>
 </body>
